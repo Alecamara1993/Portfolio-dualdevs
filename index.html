@@ -2,173 +2,332 @@
 <html lang="pt-br" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alessandro Camara | Landing Pages de Alta Conversão</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DualDevs Tech | Fullstack High-End | Alessandro Câmara</title>
     
-    <meta name="description" content="Desenvolvedor Front-End especializado em Landing Pages de alta conversão. Criamos interfaces modernas com HTML5, CSS3 e JavaScript.">
-    <meta name="author" content="Alessandro Camara">
-
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://unpkg.com/scrollreveal"></script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Mono&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #0b0f1a; color: #cbd5e1; }
-        .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease; }
-        .glass-card:hover { border: 1px solid rgba(34, 211, 238, 0.4); transform: translateY(-5px); }
-        .text-gradient { background: linear-gradient(90deg, #22d3ee, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .bg-grid { background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0); background-size: 40px 40px; }
-        @keyframes custom-ping { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
-        .animate-custom-ping { animation: custom-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite; }
+        :root {
+            --bg: #05070a;
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --card: rgba(255, 255, 255, 0.02);
+            --border: rgba(255, 255, 255, 0.05);
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: var(--bg); 
+            color: #f8fafc;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .glass { background: var(--card); backdrop-filter: blur(12px); border: 1px solid var(--border); }
+        .text-gradient { background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-glow { transition: 0.3s; }
+        .btn-glow:hover { box-shadow: 0 0 25px rgba(79, 172, 254, 0.5); transform: translateY(-3px); }
+        
+        .floating-code {
+            position: absolute;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            color: rgba(79, 172, 254, 0.2);
+            pointer-events: none;
+            z-index: -1;
+            padding: 10px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            border: 1px solid rgba(0,242,254,0.1);
+        }
+        .syntax-html { color: #f87171; }
+        .syntax-attr { color: #fb923c; }
+        .syntax-string { color: #4ade80; }
+
+        .code-1 { top: 15%; left: 2%; animation: float 10s infinite ease-in-out; }
+        .code-2 { top: 60%; right: 2%; animation: float 12s infinite ease-in-out-reverse; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        .testimonial-card { transition: 0.4s ease; border: 1px solid var(--border); height: 100%; }
+        .testimonial-card:hover { border-color: rgba(79, 172, 254, 0.3); background: rgba(255, 255, 255, 0.04); }
+
+        .project-card { overflow: hidden; position: relative; border-radius: 1.5rem; }
+        .project-card img { transition: 0.5s ease; width: 100%; height: 100%; object-fit: cover; }
+        .project-card:hover img { transform: scale(1.1); }
+        .project-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 20px; opacity: 0; transition: 0.3s;
+        }
+        /* Mobile adjustment for overlay */
+        @media (max-width: 768px) { .project-overlay { opacity: 1; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); } }
+        .project-card:hover .project-overlay { opacity: 1; }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #05070a; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
     </style>
 </head>
-<body class="overflow-x-hidden bg-grid">
+<body class="antialiased">
 
-    <nav class="fixed w-full z-50 bg-[#0b0f1a]/90 backdrop-blur-lg border-b border-slate-800/50">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <span class="text-2xl font-black tracking-tighter text-gradient uppercase italic">Alessandro.Dev</span>
-            <div class="hidden md:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest text-white">
-                <a href="#portfolio" class="hover:text-cyan-400 transition-colors">Portfólio</a>
-                <a href="https://github.com/Alecamara1993" target="_blank" class="hover:text-cyan-400 transition-colors">GitHub <i class="fas fa-external-link-alt ml-1 text-[10px]"></i></a>
-                <a href="#contato" class="bg-cyan-500 hover:bg-cyan-600 text-slate-900 px-5 py-2 rounded-full transition-all text-slate-900">Orçamento</a>
+    <div class="floating-code code-1 hidden lg:block">
+        <span class="syntax-html">&lt;section</span> <span class="syntax-attr">id=</span><span class="syntax-string">"hero"</span><span class="syntax-html">&gt;</span><br>
+        &nbsp;&nbsp;<span class="syntax-html">&lt;h1&gt;</span>DualDevs Tech<span class="syntax-html">&lt;/h1&gt;</span><br>
+        <span class="syntax-html">&lt;/section&gt;</span>
+    </div>
+
+    <div class="floating-code code-2 hidden lg:block">
+        .inventory {<br>
+        &nbsp;&nbsp;integration: <span class="syntax-string">"active"</span>;<br>
+        &nbsp;&nbsp;alerts: <span class="syntax-string">"push"</span>;<br>
+        }
+    </div>
+
+    <nav class="fixed w-full z-50 glass py-3 md:py-4 px-4 md:px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-xl md:text-2xl font-extrabold tracking-tighter flex items-center gap-2">
+                <i data-lucide="binary" class="text-blue-500 w-6 h-6"></i>
+                DUAL<span class="text-blue-500">DEVS</span>
             </div>
+            <div class="hidden md:flex gap-6 text-sm font-medium items-center">
+                <a href="#experiencia" class="hover:text-blue-400 transition">Experiência</a>
+                <a href="#portfolio" class="hover:text-blue-400 transition">Projetos</a>
+                <a href="#testemunhos" class="hover:text-blue-400 transition">Feedback</a>
+                <a href="#proposta" class="bg-blue-600 px-5 py-2 rounded-full text-white font-bold btn-glow transition flex items-center gap-2">
+                    Orçamento
+                </a>
+            </div>
+            <a href="https://wa.me/5521993479587" class="md:hidden bg-blue-600 p-2 rounded-lg">
+                <i data-lucide="send" class="w-5 h-5"></i>
+            </a>
         </div>
     </nav>
 
-    <section class="reveal-top relative pt-48 pb-32 px-6">
-        <div class="max-w-5xl mx-auto text-center relative z-10">
-            <h1 class="text-5xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tight text-white uppercase">
-                SITES QUE <br> <span class="text-gradient italic">VENDEM POR VOCÊ</span>
+    <section id="home" class="pt-32 md:pt-48 pb-20 px-6">
+        <div class="max-w-6xl mx-auto text-center" data-aos="fade-up">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 glass rounded-full text-[10px] md:text-xs font-semibold tracking-widest uppercase border-blue-500/30 text-blue-400">
+                <i data-lucide="shield-check" class="w-3 h-3 md:w-4 h-4"></i> Alessandro Câmara | DualDevs CEO
+            </div>
+            <h1 class="text-4xl md:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight tracking-tighter">
+                Sistemas de <br><span class="text-gradient">Alta Performance</span>
             </h1>
-            <p class="text-lg md:text-2xl text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-                Transformo sua presença digital em uma <span class="text-white font-bold uppercase">máquina de vendas</span> com o poder da Dualdevs Tech.
+            <p class="text-slate-400 text-base md:text-xl lg:text-2xl max-w-2xl mx-auto mb-10">
+                Soluções Fullstack onde a programação atinge seu ápice. Do Front-end avançado à gestão de fluxo de caixa.
             </p>
-            <div class="flex flex-wrap justify-center gap-6">
-                <a href="https://github.com/Alecamara1993" target="_blank" class="bg-white text-slate-950 px-10 py-5 rounded-2xl font-black text-lg hover:bg-cyan-400 transition-all hover:scale-105 shadow-2xl uppercase">
-                    GitHub de Projetos
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#proposta" class="px-8 py-4 bg-white text-black font-extrabold rounded-xl btn-glow transition text-base flex items-center justify-center gap-2">
+                    Iniciar Projeto <i data-lucide="arrow-right" class="w-5 h-5"></i>
                 </a>
-                <a href="#contato" class="border border-slate-700 hover:bg-slate-800/50 text-white px-10 py-5 rounded-2xl font-black text-lg transition-all uppercase">
-                    Solicitar Orçamento
+                <a href="https://wa.me/5521993479587" target="_blank" class="px-8 py-4 glass font-bold rounded-xl hover:bg-white/5 transition flex items-center justify-center gap-3 text-base">
+                    <i data-lucide="message-square" class="text-blue-500"></i> WhatsApp
                 </a>
             </div>
         </div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-600/10 blur-[120px] rounded-full -z-10"></div>
     </section>
 
-    <section id="portfolio" class="py-24 px-6 bg-slate-900/10">
-        <div class="max-w-6xl mx-auto">
-            <div class="reveal-top text-center mb-16">
-                <h2 class="text-4xl font-black uppercase italic text-white">Projeto em Destaque</h2>
-                <div class="h-1.5 w-20 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full mx-auto mt-4"></div>
+    <section id="experiencia" class="py-20 px-6 bg-[#080a10] border-y border-white/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right" class="text-center lg:text-left">
+                <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter mb-6">Tradição em <br><span class="text-gradient">Inovação Digital</span></h2>
+                <p class="text-slate-400 text-base md:text-lg mb-8">Especialista em automação e dashboards inteligentes.</p>
+                <div class="inline-flex items-center gap-4 glass p-5 rounded-2xl border-blue-500/20">
+                    <div class="text-4xl md:text-5xl font-black text-blue-400">2+</div>
+                    <div class="text-left text-sm md:text-base font-bold tracking-tight text-slate-200 leading-tight">Anos de <br>Mercado</div>
+                </div>
             </div>
+            <div class="grid grid-cols-2 gap-4 md:gap-6" data-aos="fade-left">
+                <div class="glass p-6 md:p-8 rounded-2xl text-center">
+                    <i data-lucide="layout" class="text-blue-400 mx-auto mb-3 w-8 h-8"></i>
+                    <h3 class="font-bold text-sm md:text-base">Front-End</h3>
+                </div>
+                <div class="glass p-6 md:p-8 rounded-2xl text-center">
+                    <i data-lucide="database" class="text-purple-400 mx-auto mb-3 w-8 h-8"></i>
+                    <h3 class="font-bold text-sm md:text-base">Sistemas</h3>
+                </div>
+                <div class="glass p-6 md:p-8 rounded-2xl text-center">
+                    <i data-lucide="trending-up" class="text-emerald-400 mx-auto mb-3 w-8 h-8"></i>
+                    <h3 class="font-bold text-sm md:text-base">Financeiro</h3>
+                </div>
+                <div class="glass p-6 md:p-8 rounded-2xl text-center">
+                    <i data-lucide="zap" class="text-orange-400 mx-auto mb-3 w-8 h-8"></i>
+                    <h3 class="font-bold text-sm md:text-base">Automação</h3>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <div class="max-w-4xl mx-auto">
-                <a href="https://keroburguer.vercel.app/" target="_blank" class="reveal-bottom block glass-card rounded-[40px] overflow-hidden group">
-                    <div class="relative h-[500px] overflow-hidden bg-slate-800">
-                        <img src="https://static.saipos.com/saipos-estatico/img-items/42715/store_item/99f1528ebe6e55ce6f988b551591f5db.png" alt="Kero Burger Alessandro Camara" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700">
+    <section id="portfolio" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter mb-12 text-center">Nossos <span class="text-gradient">Projetos</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="project-card glass h-64 md:h-80" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500" alt="Projeto 1">
+                    <div class="project-overlay">
+                        <h4 class="text-xl font-bold">Studio Flow</h4>
+                        <p class="text-slate-300 text-xs mb-2">Gestão e Agendamento.</p>
+                        <span class="text-[10px] font-mono text-blue-400 px-2 py-1 glass rounded">Fullstack</span>
+                    </div>
+                </div>
+                <div class="project-card glass h-64 md:h-80" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=500" alt="Projeto 2">
+                    <div class="project-overlay">
+                        <h4 class="text-xl font-bold">Smart Inventory</h4>
+                        <p class="text-slate-300 text-xs mb-2">Estoque Integrado.</p>
+                        <span class="text-[10px] font-mono text-blue-400 px-2 py-1 glass rounded">Dashboard</span>
+                    </div>
+                </div>
+                <div class="project-card glass h-64 md:h-80" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500" alt="Projeto 3">
+                    <div class="project-overlay">
+                        <h4 class="text-xl font-bold">CashFlow Master</h4>
+                        <p class="text-slate-300 text-xs mb-2">Monitoramento Fiscal.</p>
+                        <span class="text-[10px] font-mono text-blue-400 px-2 py-1 glass rounded">Data Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<section id="portfolio" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter mb-12 text-center" data-aos="fade-up"><span class="text-gradient"></span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                
+                <div class="project-card glass group" data-aos="fade-right">
+                    <div class="h-64 md:h-96 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-black/60 z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=800&auto=format&fit=crop" alt="Dashboard Studio Florescer" class="opacity-60 group-hover:opacity-100 transition-opacity">
                         
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-90"></div>
-                        
-                        <div class="absolute bottom-10 left-10 right-10 flex justify-between items-end">
-                            <div class="space-y-4">
-                                <span class="bg-orange-600 text-white text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest inline-block border border-orange-400/50 shadow-[0_0_15px_rgba(234,88,12,0.4)]">Projeto Ao Vivo</span>
-                                <h3 class="text-5xl font-black text-white uppercase italic leading-none">Kero Burger</h3>
-                                <p class="text-slate-300 text-lg max-w-md">E-commerce de alto impacto com cardápio dinâmico e fluxo otimizado para vendas via WhatsApp.</p>
-                                <div class="flex gap-4">
-                                    <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest"><i class="fas fa-bolt mr-1"></i> Performance 100%</span>
-                                    <span class="text-xs font-bold text-purple-400 uppercase tracking-widest"><i class="fas fa-mobile-alt mr-1"></i> Mobile First</span>
+                        <div class="project-overlay z-20">
+                            <div class="flex justify-between items-end w-full">
+                                <div>
+                                    <h4 class="text-2xl md:text-3xl font-extrabold text-white">Studio Florescer</h4>
+                                    <p class="text-blue-400 font-mono text-sm mb-4">Business Intelligence & Gestão de Aulas</p>
+                                    <ul class="text-slate-300 text-xs md:text-sm space-y-1 mb-4">
+                                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-400"></i> Exportação de Relatórios PDF (jsPDF)</li>
+                                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-400"></i> Controle de Frequência Inteligente</li>
+                                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-400"></i> Fluxo de Caixa Integrado</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-blue-600 p-3 rounded-full mb-4">
+                                    <i data-lucide="layout-dashboard" class="text-white w-6 h-6"></i>
                                 </div>
                             </div>
-                            <div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/20 group-hover:bg-cyan-500 group-hover:text-slate-900 transition-all shadow-2xl">
-                                <i class="fas fa-external-link-alt text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card glass group" data-aos="fade-left">
+                    <div class="h-64 md:h-96 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-amber-900/20 to-black/60 z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=800&auto=format&fit=crop" alt="Sistema SMART CEL" class="opacity-60 group-hover:opacity-100 transition-opacity">
+                        
+                        <div class="project-overlay z-20">
+                            <div class="flex justify-between items-end w-full">
+                                <div>
+                                    <h4 class="text-2xl md:text-3xl font-extrabold text-white">SMART CEL</h4>
+                                    <p class="text-emerald-400 font-mono text-sm mb-4">ERP de Gestão Profissional</p>
+                                    <ul class="text-slate-300 text-xs md:text-sm space-y-1 mb-4">
+                                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-400"></i> Gestão de Estoque com Badges de Status</li>
+                                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-400"></i> Integração Excel (SheetJS)</li>
+                                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-400"></i> Alertas de Margem de Lucro em Real-time</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-emerald-600 p-3 rounded-full mb-4">
+                                    <i data-lucide="smartphone" class="text-white w-6 h-6"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </a>
-                <p class="text-center mt-8 text-slate-500 text-sm font-bold uppercase tracking-widest">Clique no card para abrir o projeto em tempo real</p>
+                </div>
+
+            </div>
+
+            <div class="mt-12 text-center" data-aos="fade-up">
+                <p class="text-slate-500 font-mono text-xs uppercase tracking-[0.2em]">Tecnologias Aplicadas: Tailwind CSS • JavaScript ES6+ • jsPDF • SheetJS</p>
             </div>
         </div>
     </section>
 
-    <section id="sobre" class="py-24 px-6">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-            <div class="reveal-left space-y-8">
-                <div>
-                    <h2 class="text-4xl font-black mb-4 uppercase italic text-white">O Especialista</h2>
-                    <div class="h-1.5 w-20 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"></div>
-                </div>
-                <p class="text-slate-400 text-xl leading-relaxed">
-                    Sou o <span class="text-white font-bold uppercase italic">Alessandro Camara</span>, fundador da <span class="text-cyan-400 font-black tracking-widest">Dualdevs Tech</span>. Especialista em construir interfaces que transformam visitantes em clientes fiéis.
-                </p>
-                
-                <div class="flex gap-8 pt-4">
-                    <a href="https://www.instagram.com/alessandrocamaraa?igsh=MXc5M3R3dGp5NW9xcg==" target="_blank" class="text-4xl text-slate-500 hover:text-pink-500 transition-all transform hover:-translate-y-1">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://github.com/Alecamara1993" target="_blank" class="text-4xl text-slate-500 hover:text-white transition-all transform hover:-translate-y-1">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/alessandro-câmara" target="_blank" class="text-4xl text-slate-500 hover:text-cyan-400 transition-all transform hover:-translate-y-1">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="reveal-right">
-                <div class="glass-card p-10 rounded-[40px] border-l-8 border-cyan-500">
-                    <div class="space-y-6">
-                        <div class="flex items-center gap-4">
-                            <i class="fas fa-check text-cyan-400"></i>
-                            <span class="text-lg font-bold text-white uppercase italic tracking-wider">HTML5 Semântico & SEO</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i class="fas fa-check text-cyan-400"></i>
-                            <span class="text-lg font-bold text-white uppercase italic tracking-wider">CSS3 & Tailwind Expert</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i class="fas fa-check text-cyan-400"></i>
-                            <span class="text-lg font-bold text-white uppercase italic tracking-wider">JavaScript (ES6+) Moderno</span>
+    <section id="testemunhos" class="py-20 px-6 bg-[#080a10]">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter mb-12 text-center">Impacto <span class="text-gradient">Real</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass p-6 md:p-8 rounded-3xl testimonial-card" data-aos="zoom-in">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center font-bold text-white">AB</div>
+                        <div>
+                            <h4 class="font-bold text-base md:text-lg">Andreza Bernades</h4>
+                            <p class="text-[10px] text-blue-400 font-bold uppercase">Studio Florescer</p>
                         </div>
                     </div>
+                    <p class="text-slate-400 text-sm md:text-base leading-relaxed italic">"O Alessandro desenvolveu um sistema sob medida que integrou nosso fluxo de caixa com o agendamento de aulas. O que era confusão, hoje é automação!"</p>
+                </div>
+                <div class="glass p-6 md:p-8 rounded-3xl testimonial-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-emerald-600 flex items-center justify-center font-bold text-white">MS</div>
+                        <div>
+                            <h4 class="font-bold text-base md:text-lg">Marcio de Souza</h4>
+                            <p class="text-[10px] text-emerald-400 font-bold uppercase">SMART CEL</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 text-sm md:text-base leading-relaxed italic">"O estoque integrado com fluxo de caixa e o sistema de alertas mudou nossa gestão. Sabemos exatamente quando repor aparelhos."</p>
+                </div>
+                <div class="glass p-6 md:p-8 rounded-3xl testimonial-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center font-bold text-white border border-blue-500/30 text-blue-400">JS</div>
+                        <div>
+                            <h4 class="font-bold text-base md:text-lg text-slate-200">Juliano Soares</h4>
+                            <p class="text-[10px] text-slate-500 font-bold uppercase">Inovare Ops</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 text-sm md:text-base leading-relaxed italic">"A DualDevs Tech entrega um front-end de nível internacional. O Alessandro entende a necessidade do cliente e traduz em código impecável."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contato" class="reveal-bottom py-24 px-6">
-        <div class="max-w-3xl mx-auto glass-card p-10 md:p-16 rounded-[40px] border border-slate-800 shadow-2xl">
-            <h2 class="text-4xl font-black mb-12 uppercase italic text-center text-white">Solicitar Proposta</h2>
-            <form action="https://formspree.io/f/xdawvwvp" method="POST" class="space-y-6">
-                <input type="text" name="name" required placeholder="Seu Nome / Empresa" class="w-full bg-slate-800/50 border border-slate-700 rounded-2xl px-6 py-4 outline-none focus:border-cyan-500 text-white transition-all">
-                <input type="tel" name="phone" required placeholder="WhatsApp de Contato" class="w-full bg-slate-800/50 border border-slate-700 rounded-2xl px-6 py-4 outline-none focus:border-cyan-500 text-white transition-all">
-                <textarea name="message" rows="4" required placeholder="Fale um pouco sobre o que você precisa..." class="w-full bg-slate-800/50 border border-slate-700 rounded-2xl px-6 py-4 outline-none focus:border-cyan-500 text-white transition-all"></textarea>
-                <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-black py-6 rounded-2xl uppercase tracking-widest text-lg hover:brightness-110 shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all">
-                    Enviar Proposta Agora
+    <section id="proposta" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto glass p-8 md:p-16 rounded-[2rem] border-blue-500/10 relative overflow-hidden" data-aos="fade-up">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Start <span class="text-gradient">the Build</span></h2>
+            <p class="text-slate-400 mb-10 text-sm md:text-lg">Fale sobre seu desafio técnico.</p>
+            <form class="space-y-6 md:space-y-8" action="https://wa.me/5521993479587" method="GET">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" placeholder="Seu Nome ou Empresa" class="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-blue-500 transition-all text-sm md:text-base">
+                    <input type="text" placeholder="Contato" class="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-blue-500 transition-all text-sm md:text-base">
+                </div>
+                <textarea rows="3" placeholder="Qual seu projeto?" class="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-blue-500 transition-all text-sm md:text-base resize-none"></textarea>
+                <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition text-base shadow-lg shadow-blue-500/20">
+                    ENVIAR BRIEFING
                 </button>
             </form>
         </div>
     </section>
 
-    <footer class="py-12 border-t border-slate-900 text-center text-white">
-        <p class="text-slate-500 text-[10px] font-black tracking-[0.4em] uppercase italic">
-            Alessandro Camara • Especialista Front-End • Duque de Caxias, RJ
+    <footer class="py-12 text-center border-t border-white/5 bg-[#030406] px-6">
+        <p class="text-slate-600 text-[10px] md:text-xs font-mono uppercase tracking-widest">
+            &copy; 2026 DUALDEVS TECH | Alessandro Câmara <br> Duque de Caxias - Rio de Janeiro
         </p>
     </footer>
 
-    <a href="https://wa.me/5521993479587?text=Olá%20Alessandro,%20vi%20o%20case%20da%20Kero%20Burger%20e%20gostaria%20de%20um%20orçamento!" 
-       target="_blank" class="fixed bottom-10 right-10 z-[100] group">
-        <div class="relative w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition-all duration-300">
-            <i class="fab fa-whatsapp text-3xl"></i>
-            <div class="absolute inset-0 rounded-full bg-[#25D366] animate-custom-ping"></div>
-        </div>
+    <a href="https://wa.me/5521993479587" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 md:w-16 md:h-16 bg-[#25d366] rounded-full flex items-center justify-center text-white shadow-2xl hover:scale-110 transition z-50 animate-bounce sm:animate-none">
+        <i data-lucide="message-circle" class="w-7 h-7 md:w-8 md:h-8"></i>
     </a>
 
     <script>
-        const sr = ScrollReveal({ origin: 'bottom', distance: '60px', duration: 1000, delay: 200, reset: false });
-        sr.reveal('.reveal-top', { origin: 'top' });
-        sr.reveal('.reveal-bottom', { origin: 'bottom' });
-        sr.reveal('.reveal-left', { origin: 'left' });
-        sr.reveal('.reveal-right', { origin: 'right' });
+        lucide.createIcons();
+        AOS.init({ duration: 800, once: true, disable: 'mobile' });
     </script>
 </body>
 </html>
